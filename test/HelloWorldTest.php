@@ -21,7 +21,7 @@ class HelloWorldTest extends TestCase
     public function testApiCaller()
     {
 //        $caller = new DemoCaller("http://localhost:8888/");
-        $caller = getCaller("DemoCaller", "http://localhost:8888/");
+        $caller = gletCaller("DemoCaller", "http://localhost:8888/user");
         $response = $caller->getTo();
         $decode_data = json_decode($response, true);
         var_dump($decode_data);
@@ -31,8 +31,8 @@ class HelloWorldTest extends TestCase
 
     public function testMockCaller()
     {
-        $caller = getCaller("mock");
-        $response = $caller->getTo();
+        $mockCaller = getCaller("mock");
+        $response = $mockCaller->getTo();
         $decode_data = json_decode($response, true);
         var_dump($decode_data);
         $this->assertEquals($decode_data["name"], "jimmy");
